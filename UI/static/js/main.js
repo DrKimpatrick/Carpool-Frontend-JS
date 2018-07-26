@@ -41,7 +41,7 @@ export function saveToCurrentUserInfo() {
 export function getFromCurrentUserInfo() {
     let str = localStorage.getItem('currentUserInfo');
     let response = JSON.parse(str);
-    return response
+    return response['userUsername']
 }
 
 export function logoutUser() {

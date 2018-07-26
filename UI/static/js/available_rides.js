@@ -2,13 +2,14 @@
  * Created by Dr.Kimpatrick on 7/25/2018.
  */
 
-import {loginPageUrl, logoutUser, getUserInfo, getTokenFromVerifyUser, getFromCurrentUserInfo} from './main.js'
+import {loginPageUrl, logoutUser, getTokenFromVerifyUser, getFromCurrentUserInfo, getUserInfo, saveToCurrentUserInfo} from './main.js'
+getUserInfo();
+saveToCurrentUserInfo();
 
 let loginUsernameDisplayArea = document.getElementById("currentLoginUsername");
+
 let toContainRides = document.getElementById("availableRideArea");
 
-console.log(getUserInfo());
-console.log(getFromCurrentUserInfo());
 function logResultRides(result) {
     let error = result['message']; // missing or expired token
     let rides = result['Rides'];
@@ -18,7 +19,8 @@ function logResultRides(result) {
         window.location.replace(loginPageUrl);
 
     }else {
-        //loginUsernameDisplayArea.innerText = getFromCurrentUserInfo();
+
+        loginUsernameDisplayArea.innerText = getFromCurrentUserInfo();
         let myHTML = '';
         for(let index in rides) {
             let dict = rides[index];
@@ -41,7 +43,7 @@ function logResultRides(result) {
                     </tr> \
                     <tr> \
                         <th>Destination</th> \
-                        <td id="destination">pending</td> \
+                        <td id="destination">'+(getFromCurrentUserInfo())+'</td> \
                     </tr> \
                     <tr> \
                         <th>Meetpoint</th> \
@@ -94,7 +96,4 @@ let logout = document.getElementById("logoutThisUser");
 logout.onclick = function () {
     logoutUser()
 };
-console.log(getFromCurrentUserInfo());
-console.log(getTokenFromVerifyUser());
-console.log(getFromCurrentUserInfo());
 

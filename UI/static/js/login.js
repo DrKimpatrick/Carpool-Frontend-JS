@@ -2,7 +2,7 @@
  * Created by Dr.Kimpatrick on 7/25/2018.
  */
 
-import {getTokenFromVerifyUser, availableRidesUrl, VerifyUser, saveToVerifyUser, getUserInfo, getFromCurrentUserInfo, logoutUser, saveToCurrentUserInfo} from './main.js';
+import {VerifyUser, saveToVerifyUser, getUserInfo, saveToCurrentUserInfo, availableRidesUrl} from './main.js';
 
 /************ Login alone ****************************/
 
@@ -21,7 +21,8 @@ function logResult(result) {
 
         getUserInfo();
         saveToCurrentUserInfo();
-        //window.location.replace(availableRidesUrl);
+
+        window.location.replace(availableRidesUrl);
 
     }else{
         loginErrorArea.innerText = error
@@ -68,7 +69,6 @@ form.addEventListener('submit', function getInfo(event){
 
 //console.log(getTokenFromVerifyUser());
 //console.log(getFromCurrentUserInfo());
-
 
 
 
