@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="static/css/main.css" />
     <!--<script src="static/js/main.js"></script>-->
+    <script src="static/js/available_rides.js" type="module"></script>
 </head>
 <body>
     <div class="big_wrapper">
@@ -15,11 +16,11 @@
             <nav>
                 <ul>
                     <li><a href="available_ride_offers.html">Home</a></li>
-                    <li><a href="profile_page_rides_given.html">dr.kimpatrick</a></li>
-                    <li><a href="index.html">Logout</a></li>
+                    <li><a href="profile_page_rides_given.html" id="currentLoginUsername"></a></li>
+                    <li id="logoutThisUser"><a href="#">Logout</a></li>
                 </ul>
             </nav>
-            <div class="toggle-button" onclick="toggleSidebar()">
+            <div class="toggle-button">
                 <span></span>
                 <span></span>
                 <span></span>

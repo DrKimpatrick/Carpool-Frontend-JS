@@ -5,30 +5,66 @@
 export let loginPageUrl = "index.html";
 export let availableRidesUrl = "available_ride_offers.html";
 
+
+/**************************************/
+export let VerifyUser = {
+    token: "", // contains the jwt token
+    userUsername: ""
+};
+
+
+export function saveToVerifyUser() {
+    let str = JSON.stringify(VerifyUser);
+    localStorage.setItem("VerifyUser", str)
+}
+
+// this currently returns the user token
+export function getTokenFromVerifyUser() {
+    let str = localStorage.getItem('VerifyUser');
+    let response = JSON.parse(str);
+    return response.token
+}
+/*
+export function getFromCurrentUserInfo() {
+    let str = localStorage.getItem('VerifyUser');
+    let response = JSON.parse(str);
+    return response
+}
+*/
+export let currentUserInfo = {userUsername: ""};
+
+export function saveToCurrentUserInfo() {
+    let str = JSON.stringify(currentUserInfo);
+    localStorage.setItem("currentUserInfo", str)
+}
+
+export function getFromCurrentUserInfo() {
+    let str = localStorage.getItem('currentUserInfo');
+    let response = JSON.parse(str);
+    return response
+}
+
+export function logoutUser() {
+    // logout the current user
+    localStorage.clear();
+    window.location.replace(loginPageUrl)
+}
+
 /*************** Getting Current user info ***************/
 function logUserInfo(result) {
     let userInfoResult = result['User_info'];
-    let tokenInfo = result['message'];
-    if (tokenInfo){
-        // the token is missing or is expired
-
-        // set isLoggedIn to false
-        VerifyUser.isLoggedIn = false;
-
-        // redirect to the login page
+    let tokenErrorInfo = result['message'];
+    if (tokenErrorInfo){
         window.location.replace(loginPageUrl)
     }else {
-        // lets now get the info of the current user
-        // Update userInfo in VerifyUser
-        VerifyUser.userInfo.username = userInfoResult['username'];
-        VerifyUser.userInfo.email = userInfoResult['email'];
-        VerifyUser.userInfo.phone_number = userInfoResult['phone_number'];
-        VerifyUser.userInfo.gender = userInfoResult['gender'];
+        //currentUserInfo.username = userInfoResult['username'];
+        //saveToCurrentUserInfo();
+        //VerifyUser.token = getTokenFromVerifyUser();
+        //VerifyUser.userUsername = userInfoResult['username'];
 
-        // also set isLoggedIn to true
-        VerifyUser.isLoggedIn = true;
-        // from here call any protected endpoint because the toke
-        // is valid
+        //saveToVerifyUser
+        currentUserInfo.userUsername = userInfoResult['username'];
+        saveToCurrentUserInfo();
     }
 }
 
@@ -42,28 +78,15 @@ function fetchCurrentUserInfo(pathToResource) {
     .then(logUserInfo) // 3
 }
 
-/**************************************/
-export let VerifyUser = {
-    token: "", // contains the jwt token
-    userInfo: {username: "", email: "", phone_number: "", gender: ""},
-    isLoggedIn: false,
-    logoutUser: function verifyLogin() {
-        // It resets the token to an empty string on logout
-        // It resets the isLoggedIn back to false
-        // and redirects back to the login page
-        VerifyUser.token = '';
-        VerifyUser.isLoggedIn = false;
-        window.location.replace(loginPageUrl)
 
-    },
-    getUserInfo: function getInfo() {
+export function getUserInfo() {
         // this function retrieves the info of the current user
         // It updates the userInfo key of VerifyUser
         // also confirms if user is really logged in
         const userInfoUrl = "http://127.0.0.1:5000/api/v1/current/user/info";
 
         let header = new Headers({"Content-Type": "application/json",
-                                  "Authorization": VerifyUser.token});
+                                  "Authorization": getTokenFromVerifyUser()});
 
         // new Request(uri, option);
         let option = {
@@ -74,7 +97,6 @@ export let VerifyUser = {
         let req = new Request(userInfoUrl, option);
 
         // call to the function that fetches the current user info
-        fetchCurrentUserInfo(req)
-    }
-};
+        fetchCurrentUserInfo(req);
 
+    }

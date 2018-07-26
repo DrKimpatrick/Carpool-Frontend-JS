@@ -2,9 +2,10 @@
  * Created by Dr.Kimpatrick on 7/25/2018.
  */
 
-import {availableRidesUrl, VerifyUser} from './main.js';
+import {getTokenFromVerifyUser, availableRidesUrl, VerifyUser, saveToVerifyUser, getUserInfo, getFromCurrentUserInfo, logoutUser, saveToCurrentUserInfo} from './main.js';
 
 /************ Login alone ****************************/
+
 let form = document.getElementById("signInForm");
 let loginErrorArea = document.getElementById("loginError");
 
@@ -16,8 +17,12 @@ function logResult(result) {
         // On successful login
         // Update the VerifyUser object
         VerifyUser.token = token;
-        VerifyUser.isLoggedIn = true;
-        window.location.replace(availableRidesUrl)
+        saveToVerifyUser();
+
+        getUserInfo();
+        saveToCurrentUserInfo();
+        //window.location.replace(availableRidesUrl);
+
     }else{
         loginErrorArea.innerText = error
     }
@@ -55,5 +60,17 @@ form.addEventListener('submit', function getInfo(event){
     };
     let req = new Request(login_uri, option);
     fetchJSON(req);
+
+    //getUserInfo();
+    //saveToCurrentUserInfo();
     form.reset();
 });
+
+//console.log(getTokenFromVerifyUser());
+//console.log(getFromCurrentUserInfo());
+
+
+
+
+
+
