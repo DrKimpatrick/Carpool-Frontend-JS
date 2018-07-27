@@ -3,6 +3,9 @@
  */
 
 import {loginPageUrl, logoutUser, getTokenFromVerifyUser, getFromCurrentUserInfo, getUserInfo, saveToCurrentUserInfo} from './main.js'
+export function loadAvailableRides() {
+
+
 getUserInfo();
 saveToCurrentUserInfo();
 
@@ -96,4 +99,6 @@ let logout = document.getElementById("logoutThisUser");
 logout.onclick = function () {
     logoutUser()
 };
+}
 
+loadAvailableRides();

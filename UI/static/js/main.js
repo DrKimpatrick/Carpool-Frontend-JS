@@ -100,3 +100,4 @@ export function getUserInfo() {
         fetchCurrentUserInfo(req);
 
     }
+
