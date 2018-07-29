@@ -3,8 +3,9 @@
  */
 
 import {loginPageUrl, logoutUser, getTokenFromVerifyUser, getFromCurrentUserInfo, getUserInfo, saveToCurrentUserInfo} from './main.js'
-export function loadAvailableRides() {
 
+
+export function loadAvailableRides() {
 
 getUserInfo();
 saveToCurrentUserInfo();
@@ -22,7 +23,6 @@ function logResultRides(result) {
         window.location.replace(loginPageUrl);
 
     }else {
-
         loginUsernameDisplayArea.innerText = getFromCurrentUserInfo();
         let myHTML = '';
         for(let index in rides) {
@@ -30,7 +30,7 @@ function logResultRides(result) {
             /*myHTML += '<b>'+(dict['finish_date'])+'</b>';*/
             myHTML += '<a href="request_ride.html"> \
             <div class="ride_template" id="ride_info"> \
-                <header><h2>Standard</h2></header> \
+                <header><h2>http://127.0.0.1:5000/api/v1/rides/'+(dict['ride_id'])+'</h2></header> \
                 <table> \
                     <tr> \
                         <th>Contribution</th> \
@@ -88,6 +88,7 @@ let user_h = new Headers({"Content-Type": "application/json",
 // new Request(uri, option);
 let option = {
     method: "GET",
+    //credentials: "same-origin",
     headers: user_h
 };
 

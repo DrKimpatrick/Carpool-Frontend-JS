@@ -4,6 +4,7 @@
 
 export let loginPageUrl = "index.html";
 export let availableRidesUrl = "available_ride_offers.html";
+export  let requestRideUrl = "request_ride.html";
 
 
 /**************************************/
@@ -91,6 +92,7 @@ export function getUserInfo() {
         // new Request(uri, option);
         let option = {
             method: "GET",
+            //credentials: "same-origin",
             headers: header
         };
 

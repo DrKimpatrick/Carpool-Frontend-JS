@@ -4,6 +4,7 @@
 
 import {VerifyUser, saveToVerifyUser, getUserInfo, saveToCurrentUserInfo, availableRidesUrl} from './main.js';
 
+
 /************ Login alone ****************************/
 
 let form = document.getElementById("signInForm");
@@ -19,10 +20,12 @@ function logResult(result) {
         VerifyUser.token = token;
         saveToVerifyUser();
 
-        getUserInfo();
-        saveToCurrentUserInfo();
+        //getUserInfo();
+        //saveToCurrentUserInfo();
 
+        //window.location.replace('request_ride.html');
         window.location.replace(availableRidesUrl);
+        //window.location.href = availableRidesUrl;
 
     }else{
         loginErrorArea.innerText = error
@@ -56,6 +59,7 @@ form.addEventListener('submit', function getInfo(event){
     // new Request(uri, option);
     let option = {
         method: "POST",
+        //credentials: "same-origin",
         headers: h,
         body: JSON.stringify(data)
     };
