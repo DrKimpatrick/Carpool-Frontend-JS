@@ -2,35 +2,17 @@
  * Created by Dr.Kimpatrick on 7/25/2018.
  */
 
-import {VerifyUser, saveToVerifyUser, getUserInfo, saveToCurrentUserInfo, availableRidesUrl} from './main.js';
+import {getUserInfo, availableRidesUrl, logResult} from './main.js';
 
 
 /************ Login alone ****************************/
 
 let form = document.getElementById("signInForm");
 let loginErrorArea = document.getElementById("loginError");
-
-function logResult(result) {
-    let token = result['Token'];
-    let error = result['message'];
-
-    if (token){
-        // On successful login
-        // Update the VerifyUser object
-        VerifyUser.token = token;
-        saveToVerifyUser();
-
-        //getUserInfo();
-        //saveToCurrentUserInfo();
-
-        //window.location.replace('request_ride.html');
-        window.location.replace(availableRidesUrl);
-        //window.location.href = availableRidesUrl;
-
-    }else{
-        loginErrorArea.innerText = error
-    }
-}
+/*
+function logResult(key, value) {
+    localStorage.setItem(key, value);
+}*/
 
 
 function readResponseAsJSON(response) {
@@ -40,7 +22,16 @@ function readResponseAsJSON(response) {
 function fetchJSON(pathToResource) {
     fetch(pathToResource) // 1
     .then(readResponseAsJSON) // 2
-    .then(logResult) // 3
+    .then((data) => {
+        if(data.Token){
+            logResult("Token", data.Token); // setting token
+            getUserInfo(); // setting username
+            //window.location.replace(availableRidesUrl)
+        }else{
+            loginErrorArea.innerText = data.message;
+        }
+
+    }) // 3
 }
 
 
@@ -52,28 +43,6 @@ form.addEventListener('submit', function getInfo(event){
     "username": form.username_or_email.value,
     "password": form.password.value
     };
-
-    /*
-    let username_or_email = form.username_or_email.value;
-    let emailTest = 0;
-    username_or_email.forEach(function (item) {
-        if (item === '@'){
-            //
-            emailTest++
-        }else if (item === '.'){
-            //
-            emailTest++
-        }
-    });
-
-    if (emailTest === 2){
-        data['email'] = form.username_or_email.value
-    }else {
-        data["username"] = form.username_or_email.value
-    }*/
-
-
-
 
     const login_uri = "http://127.0.0.1:5000/api/v1/auth/login";
 

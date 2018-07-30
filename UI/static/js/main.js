@@ -7,10 +7,10 @@ export let availableRidesUrl = "available_ride_offers.html";
 export  let requestRideUrl = "request_ride.html";
 
 
-/**************************************/
+/**************************************
 export let VerifyUser = {
-    token: "", // contains the jwt token
-    userUsername: ""
+    token: "" // contains the jwt token
+    //userUsername: ""
 };
 
 
@@ -18,40 +18,41 @@ export function saveToVerifyUser() {
     let str = JSON.stringify(VerifyUser);
     localStorage.setItem("VerifyUser", str)
 }
-
+*/
 // this currently returns the user token
-export function getTokenFromVerifyUser() {
-    let str = localStorage.getItem('VerifyUser');
-    let response = JSON.parse(str);
-    return response.token
-}
+
 /*
 export function getFromCurrentUserInfo() {
     let str = localStorage.getItem('VerifyUser');
     let response = JSON.parse(str);
     return response
 }
-*/
+
 export let currentUserInfo = {userUsername: ""};
 
 export function saveToCurrentUserInfo() {
     let str = JSON.stringify(currentUserInfo);
+    console.log(str);
     localStorage.setItem("currentUserInfo", str)
+}
+*/
+export function getTokenFromVerifyUser() {
+    return localStorage.getItem('Token');
 }
 
 export function getFromCurrentUserInfo() {
-    let str = localStorage.getItem('currentUserInfo');
-    let response = JSON.parse(str);
-    return response['userUsername']
+    return localStorage.getItem('userUsername')
 }
-
+export  function getRideId() {
+    return localStorage.getItem('ride_id');
+}
 export function logoutUser() {
     // logout the current user
     localStorage.clear();
     window.location.replace(loginPageUrl)
 }
 
-/*************** Getting Current user info ***************/
+/*************** Getting Current user info ***************
 function logUserInfo(result) {
     let userInfoResult = result['User_info'];
     let tokenErrorInfo = result['message'];
@@ -65,18 +66,27 @@ function logUserInfo(result) {
 
         //saveToVerifyUser
         currentUserInfo.userUsername = userInfoResult['username'];
-        saveToCurrentUserInfo();
+        //saveToCurrentUserInfo();
     }
-}
+}*/
 
-function userInfoAsJson(response) {
+/**function userInfoAsJson(response) {
+    //console.log(response.json())
     return response.json();
-}
+}**/
 
 function fetchCurrentUserInfo(pathToResource) {
     fetch(pathToResource) // 1
-    .then(userInfoAsJson) // 2
-    .then(logUserInfo) // 3
+    .then((response) => response.json()) // 2
+    .then((data) => {
+        console.log(data);
+        if(data.message){
+            window.location.replace(loginPageUrl)
+        }else {
+            logResult("userUsername", data.User_info.username);
+            window.location.replace(availableRidesUrl);
+        }
+    }) // 3
 }
 
 
@@ -103,3 +113,6 @@ export function getUserInfo() {
 
     }
 
+export function logResult(key, value) {
+    localStorage.setItem(key, value);
+}

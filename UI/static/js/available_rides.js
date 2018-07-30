@@ -2,13 +2,10 @@
  * Created by Dr.Kimpatrick on 7/25/2018.
  */
 
-import {loginPageUrl, logoutUser, getTokenFromVerifyUser, getFromCurrentUserInfo, getUserInfo, saveToCurrentUserInfo} from './main.js'
+import {loginPageUrl, logoutUser, getTokenFromVerifyUser, getFromCurrentUserInfo, logResult} from './main.js'
 
 
 export function loadAvailableRides() {
-
-getUserInfo();
-saveToCurrentUserInfo();
 
 let loginUsernameDisplayArea = document.getElementById("currentLoginUsername");
 
@@ -28,8 +25,8 @@ function logResultRides(result) {
         for(let index in rides) {
             let dict = rides[index];
             /*myHTML += '<b>'+(dict['finish_date'])+'</b>';*/
-            myHTML += '<a href="request_ride.html"> \
-            <div class="ride_template" id="ride_info"> \
+           /* myHTML += '<!--<a href="request_ride.html"> -->\
+            <div class="ride_template" id=> \
                 <header><h2>http://127.0.0.1:5000/api/v1/rides/'+(dict['ride_id'])+'</h2></header> \
                 <table> \
                     <tr> \
@@ -62,10 +59,49 @@ function logResultRides(result) {
                     </tr> \
                 </table> \
             </div> \
-        </a> ';
+        <!--</a>--> ';*/
+
+            myHTML += `
+            <div class="ride_template" id=${dict['ride_id']}>
+                <table> 
+                    <tr> 
+                        <th>Contribution</th> 
+                        <td id="contribution">${dict['contribution']}</td> 
+                    </tr> 
+                    <tr> 
+                        <th>NumFreeSpots</th> 
+                        <td id="free_spots">${dict['free_spots']}</td> 
+                    </tr> 
+                    <tr> 
+                        <th>Origin</th> 
+                        <td id="origin">${dict['origin']}</td> 
+                    </tr> 
+                    <tr> 
+                        <th>Destination</th> 
+                        <td id="destination">${getFromCurrentUserInfo()}</td> 
+                    </tr> 
+                    <tr> 
+                        <th>Meetpoint</th> 
+                        <td id="meetpoint">${dict['meet_point']}</td> 
+                    </tr> 
+                    <tr> 
+                        <th>Start date</th> 
+                        <td id="start_date">${dict['start_date']}</td> 
+                    </tr> 
+                    <tr> 
+                        <th>Finish date</th> 
+                        <td id="finish_date">${dict['finish_date']}</td>         
+                    </tr> 
+                </table>
+            </div>
+        
+        `;
         }
         toContainRides.innerHTML = myHTML;
+
+
     }
+    activateDiv()
 }
 
 
@@ -103,3 +139,15 @@ logout.onclick = function () {
 }
 
 loadAvailableRides();
+
+function activateDiv(){
+    let rideDivs = document.getElementsByClassName('ride_template');
+
+    [].forEach.call(rideDivs, (mydiv) => {
+        mydiv.addEventListener('click', () => {
+            logResult("ride_id", mydiv.id);
+            window.location.replace('request_ride.html');
+        })
+    });
+}
+

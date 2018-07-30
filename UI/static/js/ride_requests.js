@@ -2,12 +2,10 @@
  * Created by Dr.Kimpatrick on 7/27/2018.
  */
 //logoutUser, loginPageUrl, getFromCurrentUserInfo, getTokenFromVerifyUser, getUserInfo, saveToCurrentUserInfo
-import {loginPageUrl, getUserInfo, saveToCurrentUserInfo, getTokenFromVerifyUser, logoutUser, getFromCurrentUserInfo} from './main.js'
-
+import {loginPageUrl, getTokenFromVerifyUser, logoutUser, getFromCurrentUserInfo, getRideId} from './main.js'
 export function requestRide(ride_id) {
 
-getUserInfo();
-saveToCurrentUserInfo();
+//getUserInfo();
 
 let toContainRideDetails = document.getElementById("rideDetailContent");
 let loginUsernameDisplayArea = document.getElementById("currentLoginUsername");
@@ -17,7 +15,8 @@ function logResultUser(result) {
     let error = result['message']; // missing or expired token
 
     if (error) {
-        window.location.replace(loginPageUrl)
+        //window.location.replace(loginPageUrl)
+        console.log(error)
     } else {
         loginUsernameDisplayArea.innerText = getFromCurrentUserInfo();
         let myHTML = '';
@@ -95,6 +94,8 @@ logout.onclick = function () {
     logoutUser()
 };
 
-requestRide(6);
+requestRide(getRideId());
+
+
 
 
