@@ -47,10 +47,33 @@ function fetchJSON(pathToResource) {
 form.addEventListener('submit', function getInfo(event){
     event.preventDefault();
 
+
     let data = {
-    "username": form.username.value,
+    "username": form.username_or_email.value,
     "password": form.password.value
     };
+
+    /*
+    let username_or_email = form.username_or_email.value;
+    let emailTest = 0;
+    username_or_email.forEach(function (item) {
+        if (item === '@'){
+            //
+            emailTest++
+        }else if (item === '.'){
+            //
+            emailTest++
+        }
+    });
+
+    if (emailTest === 2){
+        data['email'] = form.username_or_email.value
+    }else {
+        data["username"] = form.username_or_email.value
+    }*/
+
+
+
 
     const login_uri = "http://127.0.0.1:5000/api/v1/auth/login";
 
