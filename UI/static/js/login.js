@@ -2,17 +2,13 @@
  * Created by Dr.Kimpatrick on 7/25/2018.
  */
 
-import {getUserInfo, availableRidesUrl, logResult} from './main.js';
+import {getUserInfo, logResult} from './main.js';
 
 
 /************ Login alone ****************************/
 
 let form = document.getElementById("signInForm");
 let loginErrorArea = document.getElementById("loginError");
-/*
-function logResult(key, value) {
-    localStorage.setItem(key, value);
-}*/
 
 
 function readResponseAsJSON(response) {
@@ -31,7 +27,7 @@ function fetchJSON(pathToResource) {
             loginErrorArea.innerText = data.message;
         }
 
-    }) // 3
+    })
 }
 
 
@@ -67,13 +63,6 @@ form.addEventListener('submit', function getInfo(event){
     };
     let req = new Request(login_uri, option);
     fetchJSON(req);
-
-    //getUserInfo();
-    //saveToCurrentUserInfo();
     form.reset();
 });
-
-//console.log(getTokenFromVerifyUser());
-//console.log(getFromCurrentUserInfo());
-
 

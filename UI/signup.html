@@ -6,7 +6,7 @@
     <title>Login page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="static/css/main.css" />
-    <!--<script src="static/js/main.js"></script>-->
+
 </head>
 <body>
     <div class="big_wrapper">
@@ -26,13 +26,14 @@
         </div>
         <div class="content_area">
             <div class="form_wrapper">
+                <div id="signupErrorArea" style="background-color: #dddddd; color: #ff5642"></div>
                 <div class="form-centered">
                     <header class=" form-elements"><h2>Sign up to Carpool</h2></header>
-                    <form class="sign_in_form form-elements" action="index.html">
-
-                        <input type="text" id="username" placeholder="Type Username" required>
-                        <input type="email" id="email" placeholder="Type email" required>
-                        <input type="password" id="password" placeholder="Password" required>
+                    <form class="sign_in_form form-elements" id="signupForm">
+                        <input type="text" id="username" name="username" placeholder=" Username" required>
+                        <input type="email" id="email" name="email" placeholder=" email" required>
+                        <input type="number" id="phone_number" name="phone_number" placeholder=" +(256) Mobile" required>
+                        <input type="password" id="password" name="password" placeholder=" Password" required>
                         <input type="Submit" id="submit" value="Signup" class="button success">
                     </form>
                     <footer class="form-elements">Already have an account ? <a href="index.html" style="color: #2c3e50; font-weight: bolder">Sign in</a></footer>
@@ -99,5 +100,6 @@
             </div>
         </footer>
     </div>
+    <script src="static/js/signup.js" type="module"></script>
 </body>
 </html>
