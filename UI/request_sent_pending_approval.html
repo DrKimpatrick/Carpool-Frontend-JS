@@ -6,7 +6,7 @@
     <title>Admin - Panel</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="static/css/main.css" />
-    <!--<script src="static/js/main.js"></script>-->
+    <script src="static/js/request_sent.js" type="module"></script>
 </head>
 <body>
     <div class="big_wrapper">
@@ -15,8 +15,8 @@
             <nav>
                 <ul>
                     <li><a href="available_ride_offers.html">Home</a></li>
-                    <li><a href="profile_page_rides_given.html">dr.kimpatrick</a></li>
-                    <li><a href="index.html">Logout</a></li>
+                    <li><a href="profile_page_rides_given.html" id="currentLoginUsername"></a></li>
+                    <li id="logoutThisUser"><a href="#">Logout</a></li>
                 </ul>
             </nav>
             <div class="toggle-button" onclick="toggleSidebar()">
@@ -33,53 +33,23 @@
                     </p>
                 </div>
                 <div class="ride_detail_content">
-                    <table>
-                        <tr>
-                            <th>Driver (name)</th>
-                            <td>kimanje patrick</td>
-                        </tr>
-                        <tr>
-                            <th>Origin</th>
-                            <td>Kampala</td>
-                        </tr>
-                        <tr>
-                            <th>Destination</th>
-                            <td>Masaka</td>
-                        </tr>
-                        <tr>
-                            <th>Meetpoint</th>
-                            <td>Ndeeba</td>
-                        </tr>
-                        <tr>
-                            <th>Contribution</th>
-                            <td>4000/-</td>
-                        </tr>
-                        <tr>
-                            <th>NumFreeSpots</th>
-                            <td>10</td>
-                        </tr>
-                        <tr>
-                            <th>Start date</th>
-                            <td>18th-06-2018</td>
-                        </tr>
-                        <tr>
-                            <th>Finish date</th>
-                            <td>22nd-06-2018</td>
-                        </tr>
-                    </table>
+                    <div id="rideDetailContent">
+                        <!-- contains rides details -->
+                    </div>
                     <article class="action_area">
 
-                        <div style="padding: 15px; background-color: #2ecc71; color: yellow"><h1>Request sent and is pending approval from the driver</h1></div>
+                        <div style="padding: 15px; background-color: #2ecc71; color: yellow" id="requestResponseArea"></div>
+                        <div style="padding: 15px; background-color: #ccc7c3; color: #ff5642" id="requestResponseAreaFailure"></div>
                         <hr style="margin: 20px 0">
                         <ul>
-                            <li class="button danger"><a href="request_ride.html">Cancel request</a></li>
+                            <li class="button danger" id="cancelDisplayButton"><a href="request_ride.html">Cancel request</a></li>
                             <li class="button default"><a href="available_ride_offers.html">Back</a></li>
                         </ul>
                         <hr style="margin: 20px 0">
                         <h2>Driver details</h2>
-                        <span>Name - (Kimanje patrick)</span>
-                        <span>Email - (dr.kimanje2patrick2@gmail.com)</span>
-                        <span>Age - (30)</span>
+                        <span>Email - (<span id="driverEmail"></span>)</span>
+                        <span>Mobile - (<span id="driverMobile"></span>)</span>
+                        <span>Gender - (<span id="driverGender"></span>)</span>
                         <span><a href="#">View more</a></span>
                     </article>
                 </div>
@@ -114,5 +84,6 @@
             </div>
         </footer>
     </div>
+
 </body>
 </html>

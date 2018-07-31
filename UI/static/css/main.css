@@ -534,7 +534,7 @@ li.create_ride_link span{
     display: inline-block;
     padding: 5px;
     margin: 15px;
-    //cursor: pointer;
+    cursor: pointer;
 }
 .ride_template:hover{
     color: white;
