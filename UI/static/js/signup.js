@@ -1,4 +1,4 @@
-//import {getRideId, loginPageUrl} from './main'
+import {loginPageUrl} from './main.js'
 
 let form = document.getElementById('signupForm');
 form.addEventListener('submit', function signup(event) {
@@ -35,7 +35,9 @@ form.addEventListener('submit', function signup(event) {
             .then(function (reponse) {
                 if(reponse.status >= 200 && reponse.status < 300){
                     // signup success
-                    window.location.replace('index.html')
+                    alert(reponse.myData.message);
+                    window.location.replace(loginPageUrl);
+
                 }else {
                     // signup failure
                     let signupErrorArea = document.getElementById('signupErrorArea');
