@@ -2,7 +2,7 @@
  * Created by Dr.Kimpatrick on 7/27/2018.
  */
 //logoutUser, loginPageUrl, getFromCurrentUserInfo, getTokenFromVerifyUser, getUserInfo, saveToCurrentUserInfo
-import {getTokenFromVerifyUser, logoutUser, getFromCurrentUserInfo, getRideId, loginPageUrl} from './main.js'
+import {getTokenFromVerifyUser, logoutUser, getFromCurrentUserInfo, getRideId, loginPageUrl, logResult} from './main.js'
 
 export function requestRide(ride_id) {
 
@@ -126,7 +126,6 @@ function makeRideRequest(ride_id) {
 
     let toContainReqResponseFailure = document.getElementById('requestResponseAreaFailure');
     let toContainReqResponse = document.getElementById("requestResponseArea");
-    let cancelDisplayButton = document.getElementById('cancelDisplayButton');
     function fetchJSON(pathToResource) {
         fetch(pathToResource)
         .then(readResponseAsJSON) // 2
@@ -137,7 +136,6 @@ function makeRideRequest(ride_id) {
             }else {
                 toContainReqResponseFailure.innerText = response.data.message;
                 toContainReqResponse.style.display = 'none';
-                cancelDisplayButton.style.display = 'none';
             }
 
         })
