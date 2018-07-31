@@ -38,11 +38,21 @@ function fetchJSON(pathToResource) {
 form.addEventListener('submit', function getInfo(event){
     event.preventDefault();
 
-
+    // Login with username or email
     let data = {
-    "username": form.username_or_email.value,
-    "password": form.password.value
+    password: form.password.value
     };
+
+    let userInput = form.username_or_email.value,
+    at = "@",
+    dot = ".";
+
+    if (userInput.includes(at) && userInput.includes(dot)){
+        data['email'] = form.username_or_email.value
+    }else {
+        data['username'] = form.username_or_email.value
+    }
+
 
     const login_uri = "http://127.0.0.1:5000/api/v1/auth/login";
 
@@ -65,8 +75,5 @@ form.addEventListener('submit', function getInfo(event){
 
 //console.log(getTokenFromVerifyUser());
 //console.log(getFromCurrentUserInfo());
-
-
-
 
 
