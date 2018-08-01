@@ -5,37 +5,11 @@
 export let loginPageUrl = "index.html";
 export let availableRidesUrl = "available_ride_offers.html";
 export  let requestRideUrl = "request_ride.html";
+export let rejectOrAcceptUrl = "reject_accept_request.html";
+export let acceptedRideUrl = "accepted_ride.html";
 
 
-/**************************************
-export let VerifyUser = {
-    token: "" // contains the jwt token
-    //userUsername: ""
-};
-
-
-export function saveToVerifyUser() {
-    let str = JSON.stringify(VerifyUser);
-    localStorage.setItem("VerifyUser", str)
-}
-*/
 // this currently returns the user token
-
-/*
-export function getFromCurrentUserInfo() {
-    let str = localStorage.getItem('VerifyUser');
-    let response = JSON.parse(str);
-    return response
-}
-
-export let currentUserInfo = {userUsername: ""};
-
-export function saveToCurrentUserInfo() {
-    let str = JSON.stringify(currentUserInfo);
-    console.log(str);
-    localStorage.setItem("currentUserInfo", str)
-}
-*/
 export function getTokenFromVerifyUser() {
     return localStorage.getItem('Token');
 }
@@ -43,37 +17,26 @@ export function getTokenFromVerifyUser() {
 export function getFromCurrentUserInfo() {
     return localStorage.getItem('userUsername')
 }
+export function getCurrentUserEmail() {
+    return localStorage.getItem('userEmail')
+}
+export function getCurrentUserPhoneNumber() {
+    return localStorage.getItem('userPhoneNumber')
+}
+export function getCurrentUserBio() {
+    return localStorage.getItem('userBio')
+}
 export  function getRideId() {
     return localStorage.getItem('ride_id');
+}
+export  function getGivenRideId() {
+    return localStorage.getItem('givenRideId');
 }
 export function logoutUser() {
     // logout the current user
     localStorage.clear();
     window.location.replace(loginPageUrl)
 }
-
-/*************** Getting Current user info ***************
-function logUserInfo(result) {
-    let userInfoResult = result['User_info'];
-    let tokenErrorInfo = result['message'];
-    if (tokenErrorInfo){
-        window.location.replace(loginPageUrl)
-    }else {
-        //currentUserInfo.username = userInfoResult['username'];
-        //saveToCurrentUserInfo();
-        //VerifyUser.token = getTokenFromVerifyUser();
-        //VerifyUser.userUsername = userInfoResult['username'];
-
-        //saveToVerifyUser
-        currentUserInfo.userUsername = userInfoResult['username'];
-        //saveToCurrentUserInfo();
-    }
-}*/
-
-/**function userInfoAsJson(response) {
-    //console.log(response.json())
-    return response.json();
-}**/
 
 function fetchCurrentUserInfo(pathToResource) {
     fetch(pathToResource) // 1
@@ -84,6 +47,9 @@ function fetchCurrentUserInfo(pathToResource) {
             window.location.replace(loginPageUrl)
         }else {
             logResult("userUsername", data.User_info.username);
+            logResult("userEmail", data.User_info.email);
+            logResult("userBio", data.User_info.bio);
+            logResult("userPhoneNumber", data.User_info.phone_number);
             window.location.replace(availableRidesUrl);
         }
     }) // 3

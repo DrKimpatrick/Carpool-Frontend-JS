@@ -6,7 +6,7 @@
     <title>Admin - Panel</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="static/css/main.css" />
-    <!--<script src="static/js/main.js"></script>-->
+
 </head>
 <body>
     <div class="big_wrapper">
@@ -16,8 +16,8 @@
             <nav>
                 <ul>
                     <li><a href="available_ride_offers.html">Home</a></li>
-                    <li><a href="profile_page_rides_given.html">dr.kimpatrick</a></li>
-                    <li><a href="index.html">Logout</a></li>
+                    <li><a href="profile_page_rides_given_and_taken.html" id="currentLoginUsername"></a></li>
+                    <li id="logoutThisUser"><a href="#">Logout</a></li>
                 </ul>
             </nav>
             <div class="toggle-button" onclick="toggleSidebar()">
@@ -36,79 +36,30 @@
                     <div class="profile_pic"><img src="static/images/phillis.jpg" style="height: 150px;width: 150px; border-radius: 50%;"></div>
                     <div class="user_summary_info">
                         <div class="username_edit_profile">
-                            <h2>dr.kimpatrick</h2>
+                            <h2 id="displayUsername"></h2><!-- username of the current user -->
                             <a href="edit_user_profile.html"><button>View profile</button></a>
 
                         </div>
                         <div class="rides_count">
                             <ul>
-                                <li class="active_ride_status"> <a href="profile_page_rides_given.html"><span>2</span>&nbsp;Rides given</a></li>
-                                <li class="inactive_ride_status"><a href="profile_page_rides_taken.html"><span>4</span>&nbsp;Rides taken</a></li>
+                                <li class="active_ride_status" id="ridesGivenButton"><a href="#"><span id="numOfRidesGiven"></span>&nbsp;Rides given</a></li>
+                                <li class="inactive_ride_status" id="ridesTakenButton"><a href="#"><span id="numOfRidesTaken"></span>&nbsp;Rides taken</a></li>
                                 <li class="create_ride_link"><a href="create_ride.html">Create <span>+</span></a></li>
                             </ul>
                         </div>
                         <div class="user_bio">
-                            <h4 style="margin: 5px">Email &nbsp;<small style="font-style: italic">dr.kimanje2patrick2@gmail.com</small></h4>
-                            <p>dr.Kimpatrick is my maiden name. Am a self -taught software programmer passionate about changing the world.</p>
+                            <h4 style="margin: 5px">Email &nbsp;<small style="font-style: italic" id="displayUserEmail"></small></h4>
+                            <h4 style="margin: 5px">Mobile &nbsp;<small style="font-style: italic" id="displayUserPhone"></small></h4>
+                            <p style="margin: 5px" id="displayUserBio"></p>
                         </div>
                     </div>
 
                 </div>
                 <hr style="margin: 30px 0; color: silver; opacity: 4">
-                <div class="profile_bottom">
-                    <a href="reject_accept_request.html"><div class="ride_template">
-                        <header><h2>Standard</h2></header>
-                        <table>
-                        <tr>
-                            <th>Driver</th>
-                            <td>kimanje patrick</td>
-                        </tr>
-                        <tr>
-                            <th>Origin</th>
-                            <td>Kampala</td>
-                        </tr>
-                        <tr>
-                            <th>Destination</th>
-                            <td>Masaka</td>
-                        </tr>
-                        <tr>
-                            <th>Meetpoint</th>
-                            <td>Ndeeba</td>
-                        </tr>
+                <div class="profile_bottom" id="giveRidesDisplayArea">
 
-                        <tr>
-                            <th>Start date</th>
-                            <td>18th-06-2018</td>
-                        </tr>
-                    </table>
-
-                    </div></a>
-                    <a href="reject_accept_request.html"><div class="ride_template">
-                        <header><h2>Standard</h2></header>
-                        <table>
-                        <tr>
-                            <th>Driver</th>
-                            <td>kimanje patrick</td>
-                        </tr>
-                        <tr>
-                            <th>Origin</th>
-                            <td>Kampala</td>
-                        </tr>
-                        <tr>
-                            <th>Destination</th>
-                            <td>Masaka</td>
-                        </tr>
-                        <tr>
-                            <th>Meetpoint</th>
-                            <td>Ndeeba</td>
-                        </tr>
-
-                        <tr>
-                            <th>Start date</th>
-                            <td>18th-06-2018</td>
-                        </tr>
-                    </table>
-                    </div></a>
+                </div>
+                <div class="profile_bottom" id="takenRidesDisplayArea" style="display: none">
 
                 </div>
             </div>
@@ -142,5 +93,8 @@
             </div>
         </footer>
     </div>
+    <script src="static/js/profile_page_rides_given_and_taken.js" type="module"></script>
+
+
 </body>
 </html>

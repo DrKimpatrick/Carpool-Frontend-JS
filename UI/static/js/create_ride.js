@@ -48,7 +48,7 @@ form.addEventListener('submit', function createRide(event) {
                 if (response.status >= 200 && response.status < 300){
                     // created ride successfully
                     alert(response.myData.message);
-                    window.location.replace('profile_page_rides_given.html')
+                    window.location.replace('profile_page_rides_given_and_taken.html')
                 }else{
                     // failed to create ride
                     alert(response.myData.message);

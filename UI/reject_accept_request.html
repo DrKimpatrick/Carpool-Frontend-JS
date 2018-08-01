@@ -6,7 +6,7 @@
     <title>Admin - Panel</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="static/css/main.css" />
-    <!--<script src="static/js/main.js"></script>-->
+    <script src="static/js/reject_accept_request.js" type="module"></script>
 </head>
 <body>
     <div class="big_wrapper">
@@ -15,8 +15,8 @@
             <nav>
                 <ul>
                     <li><a href="available_ride_offers.html">Home</a></li>
-                    <li><a href="profile_page_rides_given.html">dr.kimpatrick</a></li>
-                    <li><a href="index.html">Logout</a></li>
+                    <li><a href="profile_page_rides_given_and_taken.html" id="currentLoginUsername"></a></li>
+                    <li id="logoutThisUser"><a href="#">Logout</a></li>
                 </ul>
             </nav>
             <div class="toggle-button" onclick="toggleSidebar()">
@@ -35,46 +35,12 @@
 
                 </div>
                 <div class="ride_detail_content driver_action_area">
-                    <table style="background-color: silver; border-radius: 4px;">
-                        <tr>
-                            <th>Driver (name)</th>
-                            <td>kimanje patrick</td>
-                        </tr>
-                        <tr>
-                            <th>Origin</th>
-                            <td>Kampala</td>
-                        </tr>
-                        <tr>
-                            <th>Destination</th>
-                            <td>Masaka</td>
-                        </tr>
-                        <tr>
-                            <th>Meetpoint</th>
-                            <td>Ndeeba</td>
-                        </tr>
-                        <tr>
-                            <th>Contribution</th>
-                            <td>4000/-</td>
-                        </tr>
-                        <tr>
-                            <th>NumFreeSpots</th>
-                            <td>10</td>
-                        </tr>
-                        <tr>
-                            <th>Time</th>
-                            <td>8:30 am</td>
-                        </tr>
-                        <tr>
-                            <th>Start date</th>
-                            <td>18th-06-2018</td>
-                        </tr>
-                        <tr>
-                            <th>Finish date</th>
-                            <td>22nd-06-2018</td>
-                        </tr>
-                    </table>
-                    <div class="action_area">
-                        <table>
+                    <div id="rideDetailContent">
+                        <!-- contains ride details -->
+                    </div>
+
+                    <div id="action_area_requests" class="action_area">
+                        <!--<table>
                             <tr>
                                 <th>No</th>
                                 <th>Username</th>
@@ -82,16 +48,7 @@
                                 <th>Phone</th>
                                 <th>Action</th>
                             </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>kimpatrick</td>
-                                <td>dr.kimpatrick@gmail.com</td>
-                                <td>+(256) 750461002</td>
-                                <td>
-                                    <span><button class="success">Accepted</button></span>
 
-                                </td>
-                            </tr>
                             <tr>
                                 <td>2</td>
                                 <td>kimpatrick</td>
@@ -113,27 +70,27 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>4</td>
+                                <td>3</td>
                                 <td>kimpatrick</td>
                                 <td>dr.kimpatrick@gmail.com</td>
                                 <td>+(256) 750461002</td>
                                 <td>
-                                    <span><button class="success">Accept</button></span>
-                                    <span><button class="danger">Reject</button></span>
+                                    <span><button class="danger">Rejected</button></span>
+                                    <span><button class="default">Cancel</button></span>
                                 </td>
                             </tr>
                             <tr>
-                                <td>5</td>
+                                <td>3</td>
                                 <td>kimpatrick</td>
                                 <td>dr.kimpatrick@gmail.com</td>
                                 <td>+(256) 750461002</td>
                                 <td>
-                                    <span><button class="success">Accept</button></span>
-                                    <span><button class="danger">Reject</button></span>
+                                    <span><button class="danger">Rejected</button></span>
+                                    <span><button class="default">Cancel</button></span>
                                 </td>
                             </tr>
 
-                        </table>
+                        </table>-->
 
                     </div>
                 </div>
@@ -168,5 +125,6 @@
             </div>
         </footer>
     </div>
+
 </body>
 </html>

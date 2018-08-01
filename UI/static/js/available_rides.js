@@ -57,7 +57,6 @@ function logResultRides(result) {
         }
         toContainRides.innerHTML = myHTML;
 
-
     }
     activateDiv()
 }

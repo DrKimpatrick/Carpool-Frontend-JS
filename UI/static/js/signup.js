@@ -32,16 +32,16 @@ form.addEventListener('submit', function signup(event) {
     function signupJSON(requestPath) {
         fetch(requestPath)
             .then(readResponseAsJSON)
-            .then(function (reponse) {
-                if(reponse.status >= 200 && reponse.status < 300){
+            .then(function (response) {
+                if(response.status >= 200 && response.status < 300){
                     // signup success
-                    alert(reponse.myData.message);
+                    alert(response.myData.message);
                     window.location.replace(loginPageUrl);
 
                 }else {
                     // signup failure
                     let signupErrorArea = document.getElementById('signupErrorArea');
-                    signupErrorArea.innerText = reponse.myData.message
+                    signupErrorArea.innerText = response.myData.message
                 }
             })
     }
