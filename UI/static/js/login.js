@@ -2,7 +2,7 @@
  * Created by Dr.Kimpatrick on 7/25/2018.
  */
 
-import {getUserInfo, logResult} from './main.js';
+import {getUserInfo, logResult, availableRidesUrl} from './main.js';
 
 
 /************ Login alone ****************************/
@@ -21,7 +21,9 @@ function fetchJSON(pathToResource) {
     .then((data) => {
         if(data.Token){
             logResult("Token", data.Token); // setting token
-            getUserInfo(); // setting username
+
+            // specify the url to the page you want to go
+            getUserInfo(availableRidesUrl); // setting username
             //window.location.replace(availableRidesUrl)
         }else{
             loginErrorArea.innerText = data.message;

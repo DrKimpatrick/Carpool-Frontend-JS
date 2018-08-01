@@ -7,6 +7,7 @@ export let availableRidesUrl = "available_ride_offers.html";
 export  let requestRideUrl = "request_ride.html";
 export let rejectOrAcceptUrl = "reject_accept_request.html";
 export let acceptedRideUrl = "accepted_ride_request.html";
+export let profilePageDisplayRidesUrl = "profile_page_rides_given_and_taken.html";
 
 
 // this currently returns the user token
@@ -41,7 +42,8 @@ export function logoutUser() {
     window.location.replace(loginPageUrl)
 }
 
-function fetchCurrentUserInfo(pathToResource) {
+// Also include the URL to where the page should be redirected
+function fetchCurrentUserInfo(pathToResource, RedirectUrlParameter) {
     fetch(pathToResource) // 1
     .then((response) => response.json()) // 2
     .then((data) => {
@@ -53,13 +55,13 @@ function fetchCurrentUserInfo(pathToResource) {
             logResult("userEmail", data.User_info.email);
             logResult("userBio", data.User_info.bio);
             logResult("userPhoneNumber", data.User_info.phone_number);
-            window.location.replace(availableRidesUrl);
+            window.location.replace(RedirectUrlParameter);
         }
     }) // 3
 }
 
 
-export function getUserInfo() {
+export function getUserInfo(RedirectUrlParameter) {
         // this function retrieves the info of the current user
         // It updates the userInfo key of VerifyUser
         // also confirms if user is really logged in
@@ -78,7 +80,7 @@ export function getUserInfo() {
         let req = new Request(userInfoUrl, option);
 
         // call to the function that fetches the current user info
-        fetchCurrentUserInfo(req);
+        fetchCurrentUserInfo(req, RedirectUrlParameter);
 
     }
 

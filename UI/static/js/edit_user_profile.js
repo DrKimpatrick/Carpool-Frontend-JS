@@ -1,7 +1,7 @@
 /**
  * Created by Dr.Kimpatrick on 8/1/2018.
  */
-import {getFromCurrentUserInfo, logoutUser, loginPageUrl, getTokenFromVerifyUser} from './main.js'
+import {getFromCurrentUserInfo, logoutUser, getUserInfo, loginPageUrl, profilePageDisplayRidesUrl, getTokenFromVerifyUser} from './main.js'
 
 let loginUsernameDisplayArea = document.getElementById("currentLoginUsername");
 loginUsernameDisplayArea.innerText = getFromCurrentUserInfo();
@@ -88,9 +88,10 @@ form.addEventListener('submit', function signup(event) {
             .then(readResponseAsJSON)
             .then(function (response) {
                 if(response.status >= 200 && response.status < 300){
-                    // signup success
+                    // update the cookies for userInfo
+                    // also redirect to the profile page that has rides
                     alert(response.myData.message);
-                    window.location.replace(loginPageUrl);
+                    getUserInfo(profilePageDisplayRidesUrl);
 
                 }else {
                     // signup failure
