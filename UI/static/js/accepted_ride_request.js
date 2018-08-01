@@ -1,13 +1,12 @@
 /**
- * Created by Dr.Kimpatrick on 7/27/2018.
+ * Created by Dr.Kimpatrick on 8/1/2018.
  */
-//logoutUser, loginPageUrl, getFromCurrentUserInfo, getTokenFromVerifyUser, getUserInfo, saveToCurrentUserInfo
-import {getTokenFromVerifyUser, logoutUser, getFromCurrentUserInfo, getRideId, loginPageUrl} from './main.js'
-
-export function requestRide(ride_id) {
+import {loginPageUrl, getTokenFromVerifyUser, getFromCurrentUserInfo, getTakenRideId} from './main.js'
 
 let toContainRideDetails = document.getElementById("rideDetailContent");
+
 let loginUsernameDisplayArea = document.getElementById("currentLoginUsername");
+loginUsernameDisplayArea.innerText = getFromCurrentUserInfo();
 
 function logResultUser(result) {
     let rideInfo = result['Ride details'];
@@ -16,7 +15,6 @@ function logResultUser(result) {
     if (error) {
         window.location.replace(loginPageUrl)
     } else {
-        loginUsernameDisplayArea.innerText = getFromCurrentUserInfo();
         let myHTML = '';
         myHTML += ` 
             <table> 
@@ -55,7 +53,6 @@ function logResultUser(result) {
             </table> `;
 
         toContainRideDetails.innerHTML = myHTML;
-        //document.getElementById('driverName').innerText = rideInfo['Driver details']['name'];
         document.getElementById('driverEmail').innerText = rideInfo['Driver details']['email'];
         document.getElementById('driverMobile').innerText = rideInfo['Driver details']['phone_number'];
         document.getElementById('driverGender').innerText = rideInfo['Driver details']['gender']
@@ -73,7 +70,7 @@ function getUsersJSONUser(pathToResource) {
     .then(logResultUser) // 4
   }
 
-const rideDetailUrl = "http://127.0.0.1:5000/api/v1/rides/"+ride_id;
+const rideDetailUrl = "http://127.0.0.1:5000/api/v1/rides/"+getTakenRideId();
 
 let user_h = new Headers({"Content-Type": "application/json",
                           "Authorization": getTokenFromVerifyUser()});
@@ -88,14 +85,3 @@ let option = {
 let rides_req = new Request(rideDetailUrl, option);
 
 getUsersJSONUser(rides_req);
-}
-
-requestRide(getRideId());
-
-let logout = document.getElementById("logoutThisUser");
-logout.onclick = function () {
-    logoutUser()
-};
-
-
-

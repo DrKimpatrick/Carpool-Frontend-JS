@@ -6,7 +6,7 @@ export let loginPageUrl = "index.html";
 export let availableRidesUrl = "available_ride_offers.html";
 export  let requestRideUrl = "request_ride.html";
 export let rejectOrAcceptUrl = "reject_accept_request.html";
-export let acceptedRideUrl = "accepted_ride.html";
+export let acceptedRideUrl = "accepted_ride_request.html";
 
 
 // this currently returns the user token
@@ -31,6 +31,9 @@ export  function getRideId() {
 }
 export  function getGivenRideId() {
     return localStorage.getItem('givenRideId');
+}
+export  function getTakenRideId() {
+    return localStorage.getItem('takenRideId');
 }
 export function logoutUser() {
     // logout the current user

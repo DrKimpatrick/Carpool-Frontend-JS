@@ -6,7 +6,7 @@
     <title>Admin - Panel</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="static/css/main.css" />
-    <!--<script src="static/js/main.js"></script>-->
+    <script src="static/js/edit_user_profile.js" type="module"></script>
 </head>
 <body>
     <div class="big_wrapper">
@@ -15,8 +15,8 @@
             <nav>
                 <ul>
                     <li><a href="available_ride_offers.html">Home</a></li>
-                    <li><a href="profile_page_rides_given_and_taken.html">dr.kimpatrick</a></li>
-                    <li><a href="index.html">Logout</a></li>
+                    <li><a href="profile_page_rides_given_and_taken.html" id="currentLoginUsername"></a></li>
+                    <li id="logoutThisUser"><a href="#">Logout</a></li>
                 </ul>
             </nav>
             <div class="toggle-button" onclick="toggleSidebar()">
@@ -32,31 +32,30 @@
                 </div>
             <div class="edit_profile_wrapper">
                 <div class="edit_pic_div"><img src="static/images/phillis.jpg" class="edit_pic"><button>Edit profile photo</button></div>
-                <form class="edit_profile_form" action="profile_page_rides_given_and_taken.html">
+                <form class="edit_profile_form" id="profileForm">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" id="name" required>
+                        <input type="text" id="name" name="Name" required>
                     </div>
                     <div class="form-group">
                         <label for="username">Username</label>
-                        <input type="text" id="username" required>
+                        <input type="text" id="username" name="username" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="text" id="email" required>
+                        <input type="text" id="email" name="email" required>
                     </div>
                     <div class="form-group">
                         <label for="phone">Phone Number</label>
-                        <input type="number" id="phone" required>
+                        <input type="number" id="phone" name="phone_number" required>
                     </div>
                     <div class="form-group">
                         <label for="bio">Bio</label>
-                        <textarea id="bio" required></textarea>
+                        <textarea id="bio" name="bio" required></textarea>
                     </div>
                     <div class="form-group">
                         <label for="gender">Gender</label>
-                        <select id="gender" required>
-                            <option>-select-</option>
+                        <select id="gender" name="gender" required>
                             <option>Male</option>
                             <option>Female</option>
                         </select>
