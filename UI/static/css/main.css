@@ -735,6 +735,24 @@ article .ignore{
     //background-color: #238571;
 
 }
+.cancel_request_offers_wrapper{
+    width:100%;
+    height: 400px;
+    margin:auto;
+    display: flex;
+    flex-direction: column;
+}
+.cancel_request_offers_wrapper table{
+
+    //margin:auto;
+    //display: flex;
+    //flex-direction: column;
+    width: 80%;
+    margin: 20px 10%;
+    //background-color: #238571;
+
+}
+
 
 /****************** REJECT ACCEPT REQUEST AREA ******************/
  /* inherits the ride_detail_content */

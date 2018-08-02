@@ -6,12 +6,13 @@
     <title>Admin - Panel</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="static/css/main.css" />
-    <script src="static/js/" type="module"></script>
+    <!--<script src="static/js/main.js"></script>-->
+
 </head>
 <body>
     <div class="big_wrapper">
         <div class="nav_wrapper">
-            <header><h2><a href="available_ride_offers.html" id="demo">Ride-my-way</a></h2></header>
+            <header><h2><a href="available_ride_offers.html">Ride-my-way</a></h2></header>
             <nav>
                 <ul>
                     <li><a href="available_ride_offers.html">Home</a></li>
@@ -19,22 +20,20 @@
                     <li id="logoutThisUser"><a href="#">Logout</a></li>
                 </ul>
             </nav>
-            <div class="toggle-button" onclick="toggleSidebar()">
+            <div class="toggle-button">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
         </div>
         <div class="content_area">
-            <div class="ride_wrapper">
-                <div class="page_header">
-                    <h2>Manage your requests</h2>
-                    <p>This provision is for canceling a ride request</p>
+            <div class="page_header">
+                <h2>Manage Request</h2>
+                <p>You can cancel a ride request</p>
+            </div>
+            <div class="cancel_request_offers_wrapper  action_area" id="rideRequestDisplayArea">
 
-                </div>
-                <div class="ride_detail_content driver_action_area">
-
-                </div>
+                <!-- Area to contain ride offers -->
             </div>
         </div>
         <footer class="footer_wrapper">
@@ -66,6 +65,7 @@
             </div>
         </footer>
     </div>
+    <script src="static/js/manage_requests.js" type="module"></script>
 
 </body>
 </html>

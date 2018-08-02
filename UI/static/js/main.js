@@ -8,6 +8,7 @@ export  let requestRideUrl = "request_ride.html";
 export let rejectOrAcceptUrl = "reject_accept_request.html";
 export let acceptedRideUrl = "accepted_ride_request.html";
 export let profilePageDisplayRidesUrl = "profile_page_rides_given_and_taken.html";
+export let manageRequests = "manage_requests.html";
 
 
 // this currently returns the user token
@@ -47,6 +48,9 @@ export  function getAcceptRequestId() {
 }
 export  function getRejectRequestId() {
     return localStorage.getItem('reject_request');
+}
+export  function getCancelRequestId() {
+    return localStorage.getItem('cancel_request_id');
 }
 export function logoutUser() {
     // logout the current user

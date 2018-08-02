@@ -146,11 +146,11 @@ function displayRideRequests(result) {
             num++;
 
             myHTML += `<tr>
-                                <td>${num}</td>
-                                <td>${passengerInfo['username']}</td>
-                                <td>${passengerInfo['email']}</td>
-                                <td>${passengerInfo['phone_number']}</td>
-                                `;
+                        <td>${num}</td>
+                        <td>${passengerInfo['username']}</td>
+                        <td>${passengerInfo['email']}</td>
+                        <td>${passengerInfo['phone_number']}</td>
+                        `;
             let request_status_buttons = '';
             if (request_status === 'accepted'){
                 //
@@ -310,7 +310,7 @@ function activateReactToRequest(requestClass){
             //window.location.replace(acceptedRideUrl);
             if (requestClass === 'accepted_request'){
                 //
-                let r = confirm(requestClass);
+                let r = confirm("Confirm Change \n The request status will return to default");
                     if (r == true) {
                         let reactionData = {reaction: ""};
                         reactionData.reaction = 'pending';
@@ -326,7 +326,7 @@ function activateReactToRequest(requestClass){
                     }
             }else if(requestClass === 'rejected_request'){
                 //
-                let r = confirm(requestClass);
+                let r = confirm("Confirm Change \n The request status will return to default");
                     if (r == true) {
                         let reactionData = {reaction: ""};
                         reactionData.reaction = 'pending';
@@ -341,7 +341,7 @@ function activateReactToRequest(requestClass){
                     }
             }else if(requestClass === 'accept_request'){
                 //
-                let r = confirm(requestClass);
+                let r = confirm("Confirm Accept request\n Request status will turn to accepted");
                     if (r == true) {
                         let reactionData = {reaction: ""};
                         reactionData.reaction = 'accept';
@@ -356,7 +356,7 @@ function activateReactToRequest(requestClass){
                     }
             }else {
                 // reject_request
-                let r = confirm(requestClass);
+                let r = confirm("Confirm Reject request\n Request status will turn to rejected");
                     if (r == true) {
                         let reactionData = {reaction: ""};
                         reactionData.reaction = 'reject';
