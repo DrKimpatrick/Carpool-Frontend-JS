@@ -36,6 +36,18 @@ export  function getGivenRideId() {
 export  function getTakenRideId() {
     return localStorage.getItem('takenRideId');
 }
+export  function getAcceptedRequestId() {
+    return localStorage.getItem('accepted_request');
+}
+export  function getRejectedRequestId() {
+    return localStorage.getItem('rejected_request');
+}
+export  function getAcceptRequestId() {
+    return localStorage.getItem('accept_request');
+}
+export  function getRejectRequestId() {
+    return localStorage.getItem('reject_request');
+}
 export function logoutUser() {
     // logout the current user
     localStorage.clear();

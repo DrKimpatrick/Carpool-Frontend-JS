@@ -789,6 +789,12 @@ button{
     font-weight: bolder;
     cursor: pointer;
 }
+.default-cancel{
+    background-color: #ccc969;
+    color: white;
+    font-weight: bolder;
+    cursor: pointer;
+}
 
 
 
