@@ -1,5 +1,8 @@
 import {loginPageUrl} from './main.js'
 
+let signupErrorArea = document.getElementById('signupErrorArea');
+signupErrorArea.style.display = 'none';
+
 let form = document.getElementById('signupForm');
 form.addEventListener('submit', function signup(event) {
     event.preventDefault();
@@ -40,8 +43,8 @@ form.addEventListener('submit', function signup(event) {
 
                 }else {
                     // signup failure
-                    let signupErrorArea = document.getElementById('signupErrorArea');
-                    signupErrorArea.innerText = response.myData.message
+                    signupErrorArea.innerText = response.myData.message;
+                    signupErrorArea.style.display = 'block';
                 }
             })
     }

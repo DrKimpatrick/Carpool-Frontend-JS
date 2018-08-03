@@ -8,7 +8,10 @@ import {getUserInfo, logResult, availableRidesUrl} from './main.js';
 /************ Login alone ****************************/
 
 let form = document.getElementById("signInForm");
+
+// hide by default| padding makes it visible
 let loginErrorArea = document.getElementById("loginError");
+loginErrorArea.style.display = 'none';
 
 
 function readResponseAsJSON(response) {
@@ -27,6 +30,7 @@ function fetchJSON(pathToResource) {
             //window.location.replace(availableRidesUrl)
         }else{
             loginErrorArea.innerText = data.message;
+            loginErrorArea.style.display = 'block';
         }
 
     })

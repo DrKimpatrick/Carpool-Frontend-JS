@@ -32,6 +32,7 @@ function displayRideGiven(result) {
         let myHTML = `<table>
                             <tr>
                                 <th>No</th>
+                                <th>Driver</th>
                                 <th>Origin</th>
                                 <th>Destination</th>
                                 <th>Meet_point</th>
@@ -48,6 +49,7 @@ function displayRideGiven(result) {
             num++;
             myHTML +=  `<tr>
                             <td>${num}</td>
+                            <td>${data['username']}</td>
                             <td>${data['origin']}</td>
                             <td>${data['destination']}</td>
                             <td>${data['meet_point']}</td>
