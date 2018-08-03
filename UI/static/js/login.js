@@ -11,7 +11,7 @@ let form = document.getElementById("signInForm");
 
 // hide by default| padding makes it visible
 let loginErrorArea = document.getElementById("loginError");
-loginErrorArea.style.display = 'none';
+//loginErrorArea.style.display = 'none';
 
 
 function readResponseAsJSON(response) {

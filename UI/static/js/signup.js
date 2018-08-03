@@ -1,7 +1,7 @@
 import {loginPageUrl} from './main.js'
 
 let signupErrorArea = document.getElementById('signupErrorArea');
-signupErrorArea.style.display = 'none';
+//signupErrorArea.style.display = 'none';
 
 let form = document.getElementById('signupForm');
 form.addEventListener('submit', function signup(event) {
