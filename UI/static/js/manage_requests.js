@@ -2,7 +2,7 @@
  * Created by Dr.Kimpatrick on 8/2/2018.
  */
 
-import {getFromCurrentUserInfo, logoutUser, loginPageUrl, manageRequests, getCancelRequestId, logResult, getTokenFromVerifyUser, profilePageDisplayRidesUrl} from './main.js'
+import {getFromCurrentUserInfo, hostAndPortUrl, logoutUser, loginPageUrl, manageRequests, getCancelRequestId, logResult, getTokenFromVerifyUser, profilePageDisplayRidesUrl} from './main.js'
 // is displayed in the navigation bar
 let usernameDisplayArea = document.getElementById('currentLoginUsername');
 usernameDisplayArea.innerText = getFromCurrentUserInfo();
@@ -106,7 +106,7 @@ function fetchRideGivenJSON(pathToResource) {
     .then(displayRideGiven) // 4
   }
 
-const requestsUrl = "http://127.0.0.1:5000/api/v1/user/requests";
+const requestsUrl = hostAndPortUrl+"/api/v1/user/requests";
 
 let requests_header = new Headers({"Content-Type": "application/json",
                           "Authorization": getTokenFromVerifyUser()});
@@ -178,7 +178,7 @@ function activateCancelButton(){
             // window.location.replace('request_ride.html');
             let r = confirm("Confirm Cancellation of request\n Click Cancel to ignore");
             if (r == true) {
-                const cancelRequestsUrl = "http://127.0.0.1:5000/api/v1/rides/"+getCancelRequestId()+"/requests/cancel";
+                const cancelRequestsUrl = hostAndPortUrl+"/api/v1/rides/"+getCancelRequestId()+"/requests/cancel";
                 let requests_req = new Request(cancelRequestsUrl, option_req);
                 fetchCancelRequestJSON(requests_req)
             }

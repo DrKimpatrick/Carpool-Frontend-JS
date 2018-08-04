@@ -1,4 +1,4 @@
-import {getFromCurrentUserInfo, logoutUser, getTokenFromVerifyUser} from './main.js'
+import {getFromCurrentUserInfo, hostAndPortUrl, logoutUser, getTokenFromVerifyUser} from './main.js'
 
 let usernameDisplayArea = document.getElementById('currentLoginUsername');
 usernameDisplayArea.innerText = getFromCurrentUserInfo();
@@ -22,7 +22,7 @@ form.addEventListener('submit', function createRide(event) {
         terms: form.terms.value
     };
 
-    const createRide_uri = 'http://127.0.0.1:5000/api/v1/users/rides';
+    const createRide_uri = hostAndPortUrl+'/api/v1/users/rides';
     let myHeader = new Headers({"Content-Type": "application/json",
                                 "Accept": "application/json",
                                 "Authorization": getTokenFromVerifyUser()});

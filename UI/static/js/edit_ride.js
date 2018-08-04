@@ -1,4 +1,4 @@
-import {getFromCurrentUserInfo, logoutUser, getTokenFromVerifyUser, loginPageUrl, getGivenRideId, rejectOrAcceptUrl} from './main.js'
+import {getFromCurrentUserInfo, hostAndPortUrl, logoutUser, getTokenFromVerifyUser, loginPageUrl, getGivenRideId, rejectOrAcceptUrl} from './main.js'
 
 let usernameDisplayArea = document.getElementById('currentLoginUsername');
 usernameDisplayArea.innerText = getFromCurrentUserInfo();
@@ -45,7 +45,7 @@ function getUsersJSONUser(pathToResource) {
     .then(logResultUser) // 4
   }
 
-const rideDetailUrl = "http://127.0.0.1:5000/api/v1/rides/"+getGivenRideId();
+const rideDetailUrl = hostAndPortUrl+"/api/v1/rides/"+getGivenRideId();
 
 let user_h = new Headers({"Content-Type": "application/json",
                           "Authorization": getTokenFromVerifyUser()});
@@ -77,7 +77,7 @@ form.addEventListener('submit', function createRide(event) {
         terms: form.terms.value
     };
 
-    const createRide_uri = "http://127.0.0.1:5000/api/v1/users/rides/"+getGivenRideId()+"/edit";
+    const createRide_uri = hostAndPortUrl+"/api/v1/users/rides/"+getGivenRideId()+"/edit";
     let myHeader = new Headers({"Content-Type": "application/json",
                                 "Accept": "application/json",
                                 "Authorization": getTokenFromVerifyUser()});

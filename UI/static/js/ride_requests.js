@@ -2,7 +2,7 @@
  * Created by Dr.Kimpatrick on 7/27/2018.
  */
 //logoutUser, loginPageUrl, getFromCurrentUserInfo, getTokenFromVerifyUser, getUserInfo, saveToCurrentUserInfo
-import {getTokenFromVerifyUser, logoutUser, getFromCurrentUserInfo, getRideId, loginPageUrl} from './main.js'
+import {getTokenFromVerifyUser, hostAndPortUrl, logoutUser, getFromCurrentUserInfo, getRideId, loginPageUrl} from './main.js'
 
 export function requestRide(ride_id) {
 
@@ -73,7 +73,7 @@ function getUsersJSONUser(pathToResource) {
     .then(logResultUser) // 4
   }
 
-const rideDetailUrl = "http://127.0.0.1:5000/api/v1/rides/"+ride_id;
+const rideDetailUrl = hostAndPortUrl+"/api/v1/rides/"+ride_id;
 
 let user_h = new Headers({"Content-Type": "application/json",
                           "Authorization": getTokenFromVerifyUser()});

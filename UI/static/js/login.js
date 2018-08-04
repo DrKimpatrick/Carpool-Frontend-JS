@@ -2,7 +2,7 @@
  * Created by Dr.Kimpatrick on 7/25/2018.
  */
 
-import {getUserInfo, logResult, availableRidesUrl} from './main.js';
+import {getUserInfo, logResult, availableRidesUrl, hostAndPortUrl} from './main.js';
 
 
 /************ Login alone ****************************/
@@ -56,7 +56,7 @@ form.addEventListener('submit', function getInfo(event){
     }
 
 
-    const login_uri = "http://127.0.0.1:5000/api/v1/auth/login";
+    const login_uri = hostAndPortUrl+"/api/v1/auth/login";
 
     let h = new Headers({"Content-Type": "application/json", "Accept": "application/json"});
 

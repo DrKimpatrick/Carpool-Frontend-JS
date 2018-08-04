@@ -1,7 +1,7 @@
 /**
  * Created by Dr.Kimpatrick on 8/1/2018.
  */
-import {getFromCurrentUserInfo, logoutUser, getUserInfo, loginPageUrl, profilePageDisplayRidesUrl, getTokenFromVerifyUser} from './main.js'
+import {getFromCurrentUserInfo, hostAndPortUrl, logoutUser, getUserInfo, loginPageUrl, profilePageDisplayRidesUrl, getTokenFromVerifyUser} from './main.js'
 
 let loginUsernameDisplayArea = document.getElementById("currentLoginUsername");
 loginUsernameDisplayArea.innerText = getFromCurrentUserInfo();
@@ -40,7 +40,7 @@ function getUsersJSONUser(pathToResource) {
     .then(logResultUser) // 4
   }
 
-const rideDetailUrl = "http://127.0.0.1:5000/api/v1/current/user/info";
+const rideDetailUrl = hostAndPortUrl+"/api/v1/current/user/info";
 
 let user_h = new Headers({"Content-Type": "application/json",
                           "Authorization": getTokenFromVerifyUser()});
@@ -67,7 +67,7 @@ form.addEventListener('submit', function signup(event) {
         name: form.Name.value
     };
     let myHeader = new Headers({"Content-Type": "application/json", "Accept": "application/json", "Authorization": getTokenFromVerifyUser()});
-    const update_profile_api_url = 'http://127.0.0.1:5000/api/v1/auth/edit/profile';
+    const update_profile_api_url = hostAndPortUrl+'/api/v1/auth/edit/profile';
     let option = {
         headers: myHeader,
         method: "PUT",

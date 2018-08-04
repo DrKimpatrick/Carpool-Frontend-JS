@@ -9,6 +9,7 @@ export let rejectOrAcceptUrl = "reject_accept_request.html";
 export let acceptedRideUrl = "accepted_ride_request.html";
 export let profilePageDisplayRidesUrl = "profile_page_rides_given_and_taken.html";
 export let manageRequests = "manage_requests.html";
+export let hostAndPortUrl = "http://127.0.0.1:5000";
 
 
 // this currently returns the user token
@@ -81,7 +82,7 @@ export function getUserInfo(RedirectUrlParameter) {
         // this function retrieves the info of the current user
         // It updates the userInfo key of VerifyUser
         // also confirms if user is really logged in
-        const userInfoUrl = "http://127.0.0.1:5000/api/v1/current/user/info";
+        const userInfoUrl = hostAndPortUrl+"/api/v1/current/user/info";
 
         let header = new Headers({"Content-Type": "application/json",
                                   "Authorization": getTokenFromVerifyUser()});

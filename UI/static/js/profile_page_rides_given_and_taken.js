@@ -1,7 +1,7 @@
 /**
  * Created by Dr.Kimpatrick on 7/31/2018.
  */
-import {getFromCurrentUserInfo, loginPageUrl, acceptedRideUrl, getTokenFromVerifyUser, logoutUser, getCurrentUserBio, getCurrentUserEmail, getCurrentUserPhoneNumber, logResult, rejectOrAcceptUrl} from './main.js'
+import {getFromCurrentUserInfo, hostAndPortUrl, loginPageUrl, acceptedRideUrl, getTokenFromVerifyUser, logoutUser, getCurrentUserBio, getCurrentUserEmail, getCurrentUserPhoneNumber, logResult, rejectOrAcceptUrl} from './main.js'
 
 // is displayed in the navigation bar
 let usernameDisplayArea = document.getElementById('currentLoginUsername');
@@ -82,7 +82,7 @@ function displayRidesGiven(result) {
 
     // This callback function is placed here to ensure that the first functio
     //  that displays rides given is fully executed
-    const taken_rides_uri = "http://127.0.0.1:5000/api/v1/this/user/rides/taken";
+    const taken_rides_uri = hostAndPortUrl+"/api/v1/this/user/rides/taken";
 
     let myHeader = new Headers({"Content-Type": "application/json",
                               "Authorization": getTokenFromVerifyUser()});
@@ -112,7 +112,7 @@ function getAllRidesJSON(pathToResource) {
     .then(displayRidesGiven)
   }
 
-const rides_uri = "http://127.0.0.1:5000/api/v1/this/user/rides";
+const rides_uri = hostAndPortUrl+"/api/v1/this/user/rides";
 
 let user_h = new Headers({"Content-Type": "application/json",
                           "Authorization": getTokenFromVerifyUser()});

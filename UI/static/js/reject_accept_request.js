@@ -2,7 +2,7 @@
  * Created by Dr.Kimpatrick on 8/1/2018.
  */
 
-import {rejectOrAcceptUrl, getRejectRequestId ,getRejectedRequestId ,getAcceptedRequestId, getAcceptRequestId, getFromCurrentUserInfo, logoutUser, loginPageUrl, logResult, getTokenFromVerifyUser, getGivenRideId, profilePageDisplayRidesUrl} from './main.js'
+import {rejectOrAcceptUrl, hostAndPortUrl, getRejectRequestId ,getRejectedRequestId ,getAcceptedRequestId, getAcceptRequestId, getFromCurrentUserInfo, logoutUser, loginPageUrl, logResult, getTokenFromVerifyUser, getGivenRideId, profilePageDisplayRidesUrl} from './main.js'
 
 // is displayed in the navigation bar
 let usernameDisplayArea = document.getElementById('currentLoginUsername');
@@ -65,7 +65,7 @@ function displayRideGiven(result) {
         toContainRideDetails.innerHTML = myHTML;
         }
         //
-        const rides_requests_uri = "http://127.0.0.1:5000/api/v1/users/rides/"+getGivenRideId()+"/requests";
+        const rides_requests_uri = hostAndPortUrl+"/api/v1/users/rides/"+getGivenRideId()+"/requests";
 
         let request_header = new Headers({"Content-Type": "application/json",
                                   "Authorization": getTokenFromVerifyUser()});
@@ -93,7 +93,7 @@ function fetchRideGivenJSON(pathToResource) {
     .then(displayRideGiven) // 4
   }
 
-const rideDetailUrl = "http://127.0.0.1:5000/api/v1/rides/"+getGivenRideId();
+const rideDetailUrl = hostAndPortUrl+"/api/v1/rides/"+getGivenRideId();
 
 let user_h = new Headers({"Content-Type": "application/json",
                           "Authorization": getTokenFromVerifyUser()});
@@ -237,7 +237,7 @@ deleteRideButton.addEventListener('click', function () {
         .then(logResultDisplayMessage)
       }
 
-    const rideDetailUrl = "http://127.0.0.1:5000/api/v1/users/rides/"+getGivenRideId()+"/delete";
+    const rideDetailUrl = hostAndPortUrl+"/api/v1/users/rides/"+getGivenRideId()+"/delete";
 
     let user_h = new Headers({"Content-Type": "application/json",
                               "Authorization": getTokenFromVerifyUser()});
@@ -320,7 +320,7 @@ function activateReactToRequest(requestClass){
                             body: JSON.stringify(reactionData)
                         };
 
-                        const RequestReaction_Url = "http://127.0.0.1:5000/api/v1/users/rides/"+getAcceptedRequestId()+"/reaction";
+                        const RequestReaction_Url = hostAndPortUrl+"/api/v1/users/rides/"+getAcceptedRequestId()+"/reaction";
                         let req_reaction_req = new Request(RequestReaction_Url, option_req_reaction);
                         fetchReactToRequestJSON(req_reaction_req)
                     }
@@ -335,7 +335,7 @@ function activateReactToRequest(requestClass){
                             headers: req_reaction_header,
                             body: JSON.stringify(reactionData)
                         };
-                        const RequestReaction_Url = "http://127.0.0.1:5000/api/v1/users/rides/"+getRejectedRequestId()+"/reaction";
+                        const RequestReaction_Url = hostAndPortUrl+"/api/v1/users/rides/"+getRejectedRequestId()+"/reaction";
                         let req_reaction_req = new Request(RequestReaction_Url, option_req_reaction);
                         fetchReactToRequestJSON(req_reaction_req)
                     }
@@ -350,7 +350,7 @@ function activateReactToRequest(requestClass){
                             headers: req_reaction_header,
                             body: JSON.stringify(reactionData)
                         };
-                        const RequestReaction_Url = "http://127.0.0.1:5000/api/v1/users/rides/"+getAcceptRequestId()+"/reaction";
+                        const RequestReaction_Url = hostAndPortUrl+"/api/v1/users/rides/"+getAcceptRequestId()+"/reaction";
                         let req_reaction_req = new Request(RequestReaction_Url, option_req_reaction);
                         fetchReactToRequestJSON(req_reaction_req)
                     }
@@ -365,7 +365,7 @@ function activateReactToRequest(requestClass){
                             headers: req_reaction_header,
                             body: JSON.stringify(reactionData)
                         };
-                        const RequestReaction_Url = "http://127.0.0.1:5000/api/v1/users/rides/"+getRejectRequestId()+"/reaction";
+                        const RequestReaction_Url = hostAndPortUrl+"/api/v1/users/rides/"+getRejectRequestId()+"/reaction";
                         let req_reaction_req = new Request(RequestReaction_Url, option_req_reaction);
                         fetchReactToRequestJSON(req_reaction_req)
                     }

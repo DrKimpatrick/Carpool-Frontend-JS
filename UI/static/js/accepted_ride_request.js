@@ -1,7 +1,7 @@
 /**
  * Created by Dr.Kimpatrick on 8/1/2018.
  */
-import {loginPageUrl, getTokenFromVerifyUser, getFromCurrentUserInfo, getTakenRideId} from './main.js'
+import {loginPageUrl, hostAndPortUrl, getTokenFromVerifyUser, getFromCurrentUserInfo, getTakenRideId} from './main.js'
 
 let toContainRideDetails = document.getElementById("rideDetailContent");
 
@@ -70,7 +70,7 @@ function getUsersJSONUser(pathToResource) {
     .then(logResultUser) // 4
   }
 
-const rideDetailUrl = "http://127.0.0.1:5000/api/v1/rides/"+getTakenRideId();
+const rideDetailUrl = hostAndPortUrl+"/api/v1/rides/"+getTakenRideId();
 
 let user_h = new Headers({"Content-Type": "application/json",
                           "Authorization": getTokenFromVerifyUser()});

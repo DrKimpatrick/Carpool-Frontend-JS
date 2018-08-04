@@ -1,4 +1,4 @@
-import {loginPageUrl} from './main.js'
+import {loginPageUrl, hostAndPortUrl} from './main.js'
 
 let signupErrorArea = document.getElementById('signupErrorArea');
 //signupErrorArea.style.display = 'none';
@@ -16,7 +16,7 @@ form.addEventListener('submit', function signup(event) {
         bio: ""
     };
     let myHeader = new Headers({"Content-Type": "application/json", "Accept": "application/json"});
-    const signup_api_url = 'http://127.0.0.1:5000/api/v1/auth/signup';
+    const signup_api_url = hostAndPortUrl+'/api/v1/auth/signup';
     let option = {
         headers: myHeader,
         method: "POST",
