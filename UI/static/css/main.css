@@ -203,7 +203,6 @@ form .form-group{
     .nav_wrapper nav{
         display: none;
     }
-    .toggle-button
 }
 /* ################ ###############################333 */
 
@@ -217,7 +216,7 @@ form .form-group{
     display: flex;
     width:100%;
     height: 460px;
-    // background-attachment: fixed;
+    /* background-attachment: fixed; */
     text-align: center;
 
 }
@@ -263,14 +262,14 @@ form.sign_in_form{
 /******############ AT A MIN-WIDTH:768PX ***********/
 @media (min-width: 768px) {
     .form_wrapper header{
-        //width:30%;
+        /* width:30%; */
     }
 
     form .sign_in_form{
         width:30%;
     }
     .form_wrapper footer{
-        //width:30%;
+        /* width:30%; */
     }
 }
 
@@ -478,7 +477,7 @@ form.sign_in_form{
 /* alter the color of the active link*/
 /* inactive_ride_status and active_ride_status */
 li.inactive_ride_status{
-    //color: white;
+    /* color: white; */
     background-color: silver;
     border-radius: 10px;
     margin-right: 5px;
@@ -488,7 +487,7 @@ li.inactive_ride_status a{
 }
 
 li.active_ride_status{
-    //color: white;
+    /* color: white; */
     background-color: #34495e;
     border-radius: 10px;
     margin-right: 5px;
@@ -532,7 +531,7 @@ li.create_ride_link span{
     color: silver;
     width:auto;
     height: auto;
-    //border:1px solid #2c3e50;
+    /* border:1px solid #2c3e50; */
     border-radius: 10px;
     display: inline-block;
     padding: 5px;
@@ -552,13 +551,13 @@ li.create_ride_link span{
 .ride_template header, .taken_ride_template header{
     text-align: center;
     padding: 5px;
-    //color: silver;
+    /* color: silver; */
     display: none;
 }
 
 .ride_template table, th, td, .taken_ride_template table, th, td {
     border: 0;
-    //color: silver;
+    /* color: silver; */
 
 }
 .ride_template th, .taken_ride_template th{
@@ -735,7 +734,7 @@ article .ignore{
     width:80%;
     margin:50px 10%;
     padding:30px;
-    //background-color: #238571;
+    /* background-color: #238571; */
 
 }
 .cancel_request_offers_wrapper{
@@ -747,12 +746,12 @@ article .ignore{
 }
 .cancel_request_offers_wrapper table{
 
-    //margin:auto;
-    //display: flex;
-    //flex-direction: column;
+    /* margin:auto;
+    display: flex;
+    flex-direction: column; */
     width: 80%;
     margin: 20px 10%;
-    //background-color: #238571;
+    /* background-color: #238571; */
 
 }
 
