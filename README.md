@@ -1,9 +1,4 @@
-[![Maintainability](https://api.codeclimate.com/v1/badges/811f0ab289e92637da51/maintainability)](https://codeclimate.com/github/DrKimpatrick/Carpool-api/maintainability)
-
-https://drkimpatrick.github.io/Carpool-api/UI/index.html
-
-
-# Ride-my-way (Carpool Andela Bootcamp 09 Project)
+### Ride-my-way (Carpool Andela Bootcamp 09 Project)
 
 Ride-my-way App is a carpooling application that provides drivers with the ability to create ride oﬀers  and passengers to join available ride oﬀers.
 
@@ -36,15 +31,4 @@ and agrees to all the conditions specified (price and general behavior).
     - Cancel a ride request
     - Edit user profile
     - Edit ride offer
-**API end points**
-
-- POST api/v1/auth/signup (create account) 
-- POST api/v1/auth/login (login user)
-- GET api/v1/users/rides (Create ride offer)
-- GET api/v1/rides (get all rides)
-- GET api/v1/users/rides/#/requests (view a list of ride requests to the ride)
-- GET api/v1/this/user/rides (rides given)
-- PUT api/v1/users/rides/5/reaction (reject or accept request)
-- POST api/v1/rides/#/requests (Make ride request pass in id)
-- GET api/v1/users (List all application users)
 
