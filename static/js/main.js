@@ -9,7 +9,7 @@ export let rejectOrAcceptUrl = "reject_accept_request.html";
 export let acceptedRideUrl = "accepted_ride_request.html";
 export let profilePageDisplayRidesUrl = "profile_page_rides_given_and_taken.html";
 export let manageRequests = "manage_requests.html";
-export let hostAndPortUrl = "https://carpool-andela-app.herokuapp.com";
+export let hostAndPortUrl = "https://carpool-api-andela.herokuapp.com";
 //export let hostAndPortUrl = "http://127.0.0.1:5000";
 
 
